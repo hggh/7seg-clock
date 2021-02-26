@@ -71,10 +71,7 @@ module make_seg() {
     }
 }
 
-// 1. hour
 make_seg();
-// 2. hour
-//translate([54.28, 0, 0]) make_seg();
 
 
 translate([-60, 0, 0]) {
