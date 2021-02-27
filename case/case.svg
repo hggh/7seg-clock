@@ -343,9 +343,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7071068"
-     inkscape:cx="1409.1193"
-     inkscape:cy="90.381278"
+     inkscape:zoom="2.8284272"
+     inkscape:cx="1090.9678"
+     inkscape:cy="273.13709"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -628,7 +628,7 @@
     <path
        id="rect1056-6-2-9-7"
        style="fill:none;stroke:#00c300;stroke-width:1;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
-       d="m 288.44564,87.355465 3.92534,3.92534 3.92483,-3.92534 v -27.51512 l -3.92483,-3.92482 -3.92534,3.92482 z" />
+       d="m 286.32896,89.472162 3.92534,3.92534 3.92483,-3.92534 v -27.51512 l -3.92483,-3.92482 -3.92534,3.92482 z" />
     <path
        id="rect1056-6-6-36-3"
        style="fill:none;stroke:#00c300;stroke-width:1;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
@@ -1396,15 +1396,15 @@
        id="rect1265-3-5"
        width="5"
        height="5"
-       x="289.87082"
-       y="64.433167" />
+       x="287.89191"
+       y="66.361938" />
     <rect
        style="fill:none;stroke:#00c300;stroke-width:0.120689;stroke-linecap:square;paint-order:fill markers stroke"
        id="rect1265-3-7-2"
        width="5"
        height="5"
-       x="289.87082"
-       y="77.763168" />
+       x="287.89191"
+       y="79.69194" />
     <rect
        style="fill:none;stroke:#00c300;stroke-width:0.120689;stroke-linecap:square;paint-order:fill markers stroke"
        id="rect1265-3-9"
