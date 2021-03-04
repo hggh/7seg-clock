@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name espheader)(type Legacy)(uri /home/jonas/entwicklung/kicad-libraries/esp32-prog-header.lib)(options "")(descr ""))
+  (lib (name pl9823)(type Legacy)(uri /home/jonas/entwicklung/kicad-libraries/PL9823.lib)(options "")(descr ""))
+)

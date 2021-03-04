@@ -1,0 +1,222 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L RF_Module:ESP32-WROOM-32D U?
+U 1 1 603A7D57
+P 3100 3000
+F 0 "U?" H 3100 4581 50  0000 C CNN
+F 1 "ESP32-WROOM-32D" H 3100 4490 50  0000 C CNN
+F 2 "RF_Module:ESP32-WROOM-32" H 3100 1500 50  0001 C CNN
+F 3 "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32d_esp32-wroom-32u_datasheet_en.pdf" H 2800 3050 50  0001 C CNN
+	1    3100 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L espheader:ESP32Header H?
+U 1 1 603A8DC2
+P 5150 1200
+F 0 "H?" H 5378 1321 50  0000 L CNN
+F 1 "ESP32Header" H 5378 1230 50  0000 L CNN
+F 2 "" H 5150 1200 50  0001 C CNN
+F 3 "" H 5150 1200 50  0001 C CNN
+	1    5150 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3700 2100 4850 2100
+Wire Wire Line
+	4850 2100 4850 1300
+Wire Wire Line
+	4850 1200 4750 1200
+Wire Wire Line
+	4750 1200 4750 1900
+Wire Wire Line
+	4750 1900 3700 1900
+Wire Wire Line
+	4850 1100 4650 1100
+Wire Wire Line
+	4650 1100 4650 1800
+Wire Wire Line
+	4650 1800 3700 1800
+$Comp
+L Switch:SW_Push SW?
+U 1 1 603AA0B6
+P 4900 2900
+F 0 "SW?" H 4900 3185 50  0000 C CNN
+F 1 "WiFi Rest" H 4900 3094 50  0000 C CNN
+F 2 "" H 4900 3100 50  0001 C CNN
+F 3 "~" H 4900 3100 50  0001 C CNN
+	1    4900 2900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 603AA8AD
+P 5300 2900
+F 0 "#PWR?" H 5300 2650 50  0001 C CNN
+F 1 "GND" H 5305 2727 50  0000 C CNN
+F 2 "" H 5300 2900 50  0001 C CNN
+F 3 "" H 5300 2900 50  0001 C CNN
+	1    5300 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5100 2900 5300 2900
+$Comp
+L Connector:Conn_01x03_Female J?
+U 1 1 603AB0AE
+P 6450 4650
+F 0 "J?" H 6478 4676 50  0000 L CNN
+F 1 "WS2812b" H 6478 4585 50  0000 L CNN
+F 2 "" H 6450 4650 50  0001 C CNN
+F 3 "~" H 6450 4650 50  0001 C CNN
+	1    6450 4650
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 603ACB3C
+P 7050 4750
+F 0 "#PWR?" H 7050 4500 50  0001 C CNN
+F 1 "GND" H 7055 4577 50  0000 C CNN
+F 2 "" H 7050 4750 50  0001 C CNN
+F 3 "" H 7050 4750 50  0001 C CNN
+	1    7050 4750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4700 2900 3700 2900
+NoConn ~ 2500 2000
+NoConn ~ 2500 2100
+$Comp
+L Device:D D?
+U 1 1 603BA7D1
+P 5900 3100
+F 0 "D?" H 5900 2883 50  0000 C CNN
+F 1 "D" H 5900 2974 50  0000 C CNN
+F 2 "" H 5900 3100 50  0001 C CNN
+F 3 "~" H 5900 3100 50  0001 C CNN
+	1    5900 3100
+	-1   0    0    1   
+$EndComp
+$Comp
+L LED:WS2812B D?
+U 1 1 603BC8E2
+P 5450 4200
+F 0 "D?" H 5794 4246 50  0000 L CNN
+F 1 "WS2812B" H 5794 4155 50  0000 L CNN
+F 2 "LED_SMD:LED_WS2812B_PLCC4_5.0x5.0mm_P3.2mm" H 5500 3900 50  0001 L TNN
+F 3 "https://cdn-shop.adafruit.com/datasheets/WS2812B.pdf" H 5550 3825 50  0001 L TNN
+	1    5450 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5150 4200 4400 4200
+Wire Wire Line
+	4400 4200 4400 3300
+$Comp
+L power:GND #PWR?
+U 1 1 603BD8A6
+P 5450 4600
+F 0 "#PWR?" H 5450 4350 50  0001 C CNN
+F 1 "GND" H 5455 4427 50  0000 C CNN
+F 2 "" H 5450 4600 50  0001 C CNN
+F 3 "" H 5450 4600 50  0001 C CNN
+	1    5450 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5450 4500 5450 4600
+$Comp
+L power:+5V #PWR?
+U 1 1 603AC18A
+P 5600 3100
+F 0 "#PWR?" H 5600 2950 50  0001 C CNN
+F 1 "+5V" H 5615 3273 50  0000 C CNN
+F 2 "" H 5600 3100 50  0001 C CNN
+F 3 "" H 5600 3100 50  0001 C CNN
+	1    5600 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 603FBBD7
+P 7050 4650
+F 0 "#PWR?" H 7050 4500 50  0001 C CNN
+F 1 "+5V" H 7065 4823 50  0000 C CNN
+F 2 "" H 7050 4650 50  0001 C CNN
+F 3 "" H 7050 4650 50  0001 C CNN
+	1    7050 4650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6650 4750 7050 4750
+Wire Wire Line
+	7050 4650 6650 4650
+Wire Wire Line
+	5750 4200 6650 4200
+$Comp
+L pl9823:PL9823 D?
+U 1 1 603BC728
+P 6250 3550
+F 0 "D?" H 6694 3596 50  0000 L CNN
+F 1 "PL9823" H 6694 3505 50  0000 L CNN
+F 2 "" H 6250 3550 50  0001 C CNN
+F 3 "http://akizukidenshi.com/download/ds/rita/pl9823.pdf" H 6250 3550 50  0001 C CNN
+	1    6250 3550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6650 3500 6650 4200
+Connection ~ 6650 4200
+Wire Wire Line
+	6650 4200 6650 4550
+$Comp
+L power:GND #PWR?
+U 1 1 603BD4F2
+P 6250 3950
+F 0 "#PWR?" H 6250 3700 50  0001 C CNN
+F 1 "GND" H 6255 3777 50  0000 C CNN
+F 2 "" H 6250 3950 50  0001 C CNN
+F 3 "" H 6250 3950 50  0001 C CNN
+	1    6250 3950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6250 3900 6250 3950
+Wire Wire Line
+	5850 3550 5850 3300
+Wire Wire Line
+	3700 3300 4400 3300
+Connection ~ 4400 3300
+Wire Wire Line
+	4400 3300 5850 3300
+Wire Wire Line
+	5600 3100 5750 3100
+Wire Wire Line
+	6050 3100 6100 3100
+Wire Wire Line
+	6300 3100 6300 3200
+Wire Wire Line
+	6100 3100 6100 3200
+Wire Wire Line
+	6100 3200 5450 3200
+Wire Wire Line
+	5450 3200 5450 3900
+Connection ~ 6100 3100
+Wire Wire Line
+	6100 3100 6300 3100
+$EndSCHEMATC

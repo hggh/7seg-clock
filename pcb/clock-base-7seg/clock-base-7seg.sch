@@ -2595,4 +2595,10 @@ Wire Wire Line
 	1550 10350 1000 10350
 Wire Wire Line
 	1000 10250 1350 10250
+Text Label 1150 10350 0    50   ~ 0
+5V
+Text Label 1200 10450 0    50   ~ 0
+GND
+Text Label 1100 10250 0    50   ~ 0
+DIN
 $EndSCHEMATC
