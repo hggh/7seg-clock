@@ -71,9 +71,19 @@ module make_seg() {
     }
 }
 
-make_seg();
+module spacing_screws() {
+    difference() {
+        cylinder(d=7, h=10, $fn=190);
+        cylinder(d=3.1, h=12, $fn=190);
+    }
+}
 
+make_seg();
 
 translate([-60, 0, 0]) {
     make_middle();
+}
+
+translate([-80, 0, 0]) {
+    spacing_screws();
 }
