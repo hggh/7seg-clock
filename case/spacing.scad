@@ -73,8 +73,8 @@ module make_seg() {
 
 module spacing_screws() {
     difference() {
-        cylinder(d=7, h=10, $fn=190);
-        cylinder(d=3.1, h=12, $fn=190);
+        cylinder(d=8, h=10, $fn=190);
+        cylinder(d=3.3, h=12, $fn=190);
     }
 }
 
