@@ -78,6 +78,13 @@ module spacing_screws() {
     }
 }
 
+module washer() {
+    difference() {
+        cylinder(d=8, h=2, $fn=190);
+        cylinder(d=3.3, h=3, $fn=190);
+    }
+}
+
 make_seg();
 
 translate([-60, 0, 0]) {
@@ -86,4 +93,9 @@ translate([-60, 0, 0]) {
 
 translate([-80, 0, 0]) {
     spacing_screws();
+}
+
+
+translate([-100, 0, 0]) {
+    washer();
 }
