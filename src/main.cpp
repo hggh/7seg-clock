@@ -152,6 +152,7 @@ void loop() {
   getLocalTime(&timedate);
 
   if (timedate.tm_min != time_minute || timedate.tm_hour != time_hour || update_leds == true) {
+    update_leds = false;
     // time has changed, display it on the WS2812b LEDs
     time_minute = timedate.tm_min;
     time_hour = timedate.tm_hour;
