@@ -14,13 +14,17 @@
 #include "numbers.h"
 
 #define LED_COUNT 58
+#define AMBILIGHT_LED_COUNT 9
 #define PIN_RGB_LEDS 17
+#define PIN_RGB_AMBILIGHT_LEDS 16
 #define PIN_WIFI_RESET 34
 #define HOSTNAME "clocki"
 
 CRGB leds[LED_COUNT];
+CRGB ambilight_leds[AMBILIGHT_LED_COUNT];
 CRGB led_color = CRGB::Blue;
 int led_brightness = 60;
+int ambilight_led_brightness = 30;
 String html_color_code = "#0039e6";
 bool update_leds = false;
 
@@ -60,6 +64,7 @@ void webHandleRoot() {
     content += char(file.read());
   }
   content.replace("LED_BRIGHTNESS_VALUE", String(led_brightness));
+  content.replace("LED_AMBILIGHT_BRIGHTNESS_VALUE", String(ambilight_led_brightness));
   content.replace("LED_SINGLE_COLOR_CODE", html_color_code);
   file.close();
   server.send(200, "text/html", content);
@@ -75,7 +80,9 @@ void webHandleUpdate() {
 
   String req_brightness = server.arg("brightness");
   led_brightness = req_brightness.toInt();
-  FastLED.setBrightness(led_brightness);
+
+  String req_ambilight_brightness = server.arg("ambilight_brightness");
+  ambilight_led_brightness = req_ambilight_brightness.toInt();
 
   update_leds = true;
   webHandleRoot();
@@ -85,18 +92,18 @@ void wm_config_mode_callback(WiFiManager *myWiFiManager) {
   Serial.println("Entering WiFI Manager configuration....");
 
   fill_solid(leds, LED_COUNT, CRGB::DeepPink);
-  FastLED.setBrightness(40);
-  FastLED.show();
+  FastLED[0].showLeds(40);
 }
 
 void setup() {
   btStop();
   WiFi.mode(WIFI_STA);
   WiFi.setHostname(HOSTNAME);
+  WiFi.setSleep(WIFI_PS_NONE);
   Serial.begin(115200);
 
   FastLED.addLeds<NEOPIXEL, PIN_RGB_LEDS>(leds, LED_COUNT);
-  FastLED.setBrightness(5);
+  FastLED.addLeds<NEOPIXEL, PIN_RGB_AMBILIGHT_LEDS>(ambilight_leds, AMBILIGHT_LED_COUNT);
 
   if(!SPIFFS.begin(true)){
     Serial.println("error on SPIFFS...");
@@ -104,8 +111,10 @@ void setup() {
   wm.setAPCallback(wm_config_mode_callback);
   wm.autoConnect(HOSTNAME, "");
 
-  FastLED.clear(true);
-  FastLED.show();
+  fill_solid(leds, LED_COUNT, CRGB::Black);
+  FastLED[0].showLeds(led_brightness);
+  fill_solid(ambilight_leds, AMBILIGHT_LED_COUNT, CRGB::Black);
+  FastLED[1].showLeds(ambilight_led_brightness);
 
   server.on("/", webHandleRoot);
   server.on("/update", webHandleUpdate);
@@ -135,6 +144,10 @@ void loop() {
     ESP.restart();
   }
 
+  if (WiFi.status() != WL_CONNECTED) {
+    wm.autoConnect(HOSTNAME, "");
+  }
+
   struct tm timedate;
   getLocalTime(&timedate);
 
@@ -142,7 +155,7 @@ void loop() {
     // time has changed, display it on the WS2812b LEDs
     time_minute = timedate.tm_min;
     time_hour = timedate.tm_hour;
-    FastLED.clear();
+    fill_solid(leds, LED_COUNT, CRGB::Black);
 
     if (time_hour == 0) {
       clock_display_number(0, time_hour, true);
@@ -156,7 +169,11 @@ void loop() {
     leds[28] = led_color;
     leds[29] = led_color;
 
-    FastLED.show();
+    // ambilight
+    fill_solid(ambilight_leds, AMBILIGHT_LED_COUNT, led_color);
+
+    FastLED[0].showLeds(led_brightness);
+    FastLED[1].showLeds(ambilight_led_brightness);
   }
   delay(1);
 }
