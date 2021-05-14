@@ -126,7 +126,7 @@ void setup() {
   setenv("TZ", "CET-1CEST,M3.5.0,M10.5.0/3", 1);
   tzset();
 
-  wifi_cfg_reset.attach(PIN_WIFI_RESET, INPUT_PULLUP);
+  wifi_cfg_reset.attach(PIN_WIFI_RESET, INPUT);
   wifi_cfg_reset.interval(25);
   wifi_cfg_reset.setPressedState(LOW);
 }
