@@ -11,20 +11,6 @@ module base() {
         translate([0, 85/2 - 15, 0]) {
             cube([10, 30, 15]);
         }
-        translate([0, 85/2, 10]) {
-            translate([0, 10, 0]) {
-                rotate([0, 90, 0 ]) {
-                    cylinder(r=5.5 / 2 / cos(180 / 6) + 0.05, h=5, $fn=6);
-                    cylinder(d=3.5, h=30, $fn=190);
-                }
-            }
-            translate([0, -10, 0]) {
-                rotate([0, 90, 0 ]) {
-                    cylinder(r=5.5 / 2 / cos(180 / 6) + 0.05, h=5, $fn=6);
-                    cylinder(d=3.5, h=30, $fn=190);
-                }
-            }
-        }
     }
 }
 
