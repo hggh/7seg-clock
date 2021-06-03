@@ -23,17 +23,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.3758788"
-     inkscape:cx="300.57048"
-     inkscape:cy="335.84962"
+     inkscape:zoom="1.68"
+     inkscape:cx="394.4597"
+     inkscape:cy="330.14185"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="1163"
-     inkscape:window-x="1920"
-     inkscape:window-y="0"
+     inkscape:window-height="1136"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
@@ -43,7 +43,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -51,48 +51,58 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <path
-       id="rect833"
-       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:square;paint-order:fill markers stroke;stroke-miterlimit:4;stroke-dasharray:none"
-       d="M 64.764963,97.515954 V 110.25471 H 99.764892 Z" />
-    <path
-       id="rect888-7"
-       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:square;paint-order:fill markers stroke;stroke-miterlimit:4;stroke-dasharray:none"
-       d="M 123.48355,45.055357 99.765101,110.25448 h 7.000089 v 5.00021 h 21.48448 V 91.918129 78.897218 67.151682 57.206036 45.055357 Z" />
+    <g
+       id="g1152">
+      <path
+         id="rect833"
+         style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:square;paint-order:fill markers stroke;stroke-miterlimit:4;stroke-dasharray:none"
+         d="M 64.764963,97.515954 V 110.25471 H 99.764892 Z" />
+      <path
+         id="rect888-7"
+         style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:square;paint-order:fill markers stroke;stroke-miterlimit:4;stroke-dasharray:none"
+         d="M 123.48355,45.055357 99.765101,110.25448 h 7.000089 v 5.00021 h 21.48448 V 91.918129 78.897218 67.151682 57.206036 45.055357 Z" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:square;paint-order:fill markers stroke;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect927"
+         width="42"
+         height="5"
+         x="64.764961"
+         y="110.25471" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.200771;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         id="rect961"
+         width="3"
+         height="2"
+         x="74.764961"
+         y="110.75471" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.200771;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         id="rect961-5"
+         width="3"
+         height="2"
+         x="115.24967"
+         y="110.75469" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.200771;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         id="rect961-5-3"
+         width="3"
+         height="2"
+         x="115.24967"
+         y="82.754692" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.200771;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         id="rect961-5-3-5"
+         width="3"
+         height="2"
+         x="115.24967"
+         y="96.754692" />
+    </g>
     <rect
-       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-linecap:square;paint-order:fill markers stroke;stroke-miterlimit:4;stroke-dasharray:none"
-       id="rect927"
-       width="42"
-       height="5"
-       x="64.764961"
-       y="110.25471" />
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:0.200771;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
-       id="rect961"
-       width="3"
+       style="fill:none;stroke:#000000;stroke-width:1.15915;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+       id="rect961-5-3-3"
+       width="100"
        height="2"
-       x="74.764961"
-       y="110.75471" />
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:0.200771;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
-       id="rect961-5"
-       width="3"
-       height="2"
-       x="115.24967"
-       y="110.75469" />
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:0.200771;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
-       id="rect961-5-3"
-       width="3"
-       height="2"
-       x="115.24967"
-       y="82.754692" />
-    <rect
-       style="fill:none;stroke:#000000;stroke-width:0.200771;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
-       id="rect961-5-3-5"
-       width="3"
-       height="2"
-       x="115.24967"
-       y="96.754692" />
+       x="67.578751"
+       y="128.34618" />
   </g>
 </svg>
