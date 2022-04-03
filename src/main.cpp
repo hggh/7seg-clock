@@ -1,30 +1,26 @@
 #include <Arduino.h>
 #include "SPIFFS.h"
 #include <WiFi.h>
-#include <WiFiClient.h>
 #include <ESPmDNS.h>
 #include <time.h>
 
+#include <FS.h>
 #include <FastLED.h>
 #include <Bounce2.h>
-#include <FS.h>
 #include <WiFiManager.h>
 #include <WebServer.h>
+#include <ArduinoJson.h>
 
 #include "numbers.h"
 
 #define LED_COUNT 58
-#define AMBILIGHT_LED_COUNT 9
 #define PIN_RGB_LEDS 17
-#define PIN_RGB_AMBILIGHT_LEDS 16
 #define PIN_WIFI_RESET 34
-#define HOSTNAME "clocki"
+#define HOSTNAME "clocki-7seg"
+#define uS_TO_S_FACTOR 1000000ULL
 
 CRGB leds[LED_COUNT];
-CRGB ambilight_leds[AMBILIGHT_LED_COUNT];
 CRGB led_color = CRGB::Blue;
-int led_brightness = 60;
-int ambilight_led_brightness = 30;
 String html_color_code = "#0039e6";
 bool update_leds = false;
 
@@ -37,6 +33,63 @@ const int day_light_offset_sec = 3600;
 
 uint8_t time_hour = 255;
 uint8_t time_minute = 255;
+
+struct Config{
+  uint8_t led_brightness;
+  char color[10];
+  bool time_sleep_enable;
+  uint8_t time_sleep_hour;
+  uint8_t time_sleep_duration;
+};
+Config config;
+
+void fill_color_from_config(Config &config) {
+  String ctmp = String(config.color);
+  ctmp.replace("#", "");
+  long color_code = strtol(ctmp.c_str(), NULL, 16);
+  led_color = CRGB(color_code);
+}
+
+void load_configuration(Config &config) {
+  File file = SPIFFS.open("/esp32-config.txt");
+  StaticJsonDocument<300> doc;
+  DeserializationError error = deserializeJson(doc, file);
+  if (error) {
+    Serial.println(F("Failed to read file, using default configuration"));
+  }
+  config.led_brightness = doc["led_brightness"] | 70;
+  strlcpy(config.color, doc["color"] | "#89CFF0", sizeof(config.color));
+  config.time_sleep_enable = doc["time_sleep_enable"] | false;
+  config.time_sleep_hour = doc["time_sleep_hour"] | 22;
+  config.time_sleep_duration = doc["time_sleep_duration"] | 8;
+
+  fill_color_from_config(config);
+
+  if (serializeJson(doc, file) == 0) {
+    Serial.println(F("Failed to write to file"));
+  }
+  file.close();
+}
+
+void save_configuration(Config &config) {
+  SPIFFS.remove("/esp32-config.txt");
+  File file = SPIFFS.open("/esp32-config.txt", FILE_WRITE);
+
+  StaticJsonDocument<300> doc;
+  doc["led_brightness"] = config.led_brightness;
+  doc["color"] = config.color;
+
+  doc["time_sleep_enable"] = config.time_sleep_enable;
+  doc["time_sleep_hour"] = config.time_sleep_hour;
+  doc["time_sleep_duration"] = config.time_sleep_duration;
+
+  fill_color_from_config(config);
+
+  if (serializeJson(doc, file) == 0) {
+    Serial.println(F("Failed to write to file"));
+  }
+  file.close();
+}
 
 void write_number_to_leds(uint8_t offset, uint8_t number) {
   for (uint8_t i = 0; i < 14; i++) {
@@ -63,58 +116,90 @@ void webHandleRoot() {
   while(file.available()){
     content += char(file.read());
   }
-  content.replace("LED_BRIGHTNESS_VALUE", String(led_brightness));
-  content.replace("LED_AMBILIGHT_BRIGHTNESS_VALUE", String(ambilight_led_brightness));
-  content.replace("LED_SINGLE_COLOR_CODE", html_color_code);
+  content.replace("LED_BRIGHTNESS_VALUE", String(config.led_brightness));
+  content.replace("LED_SINGLE_COLOR_CODE", String(config.color));
+  if (config.time_sleep_enable == true) {
+    content.replace("TIME_SLEEP_ENABLE", String("enable"));
+  }
+  else {
+    content.replace("TIME_SLEEP_ENABLE", String("disable"));
+  }
+  content.replace("TIME_SLEEP_HOUR", String(config.time_sleep_hour));
+  content.replace("TIME_SLEEP_DURATION", String(config.time_sleep_duration));
+
   file.close();
   server.send(200, "text/html", content);
 }
 
 void webHandleUpdate() {
   String req_color_single = server.arg("color");
-  html_color_code = req_color_single;
-  req_color_single.replace("#", "");
-
-  long color_code = strtol(req_color_single.c_str(), NULL, 16);
-  led_color = CRGB(color_code);
+  req_color_single.toCharArray(config.color, 10);
 
   String req_brightness = server.arg("brightness");
-  led_brightness = req_brightness.toInt();
+  config.led_brightness = req_brightness.toInt();
 
-  String req_ambilight_brightness = server.arg("ambilight_brightness");
-  ambilight_led_brightness = req_ambilight_brightness.toInt();
+  String req_time_sleep_enable = server.arg("time_sleep_enable");
+  if (req_time_sleep_enable.equals("enable")) {
+    config.time_sleep_enable = true;
+  }
+  else {
+    config.time_sleep_enable = false;
+  }
+
+  String req_time_sleep_hour = server.arg("time_sleep_hour");
+  config.time_sleep_hour =  req_time_sleep_hour.toInt();
+
+  String req_time_sleep_duration = server.arg("time_sleep_duration");
+  config.time_sleep_duration =  req_time_sleep_duration.toInt();
+
+  FastLED.setBrightness(config.led_brightness);
+  save_configuration(config);
 
   update_leds = true;
   webHandleRoot();
 }
 
+
 void wm_config_mode_callback(WiFiManager *myWiFiManager) {
   Serial.println("Entering WiFI Manager configuration....");
 
   fill_solid(leds, LED_COUNT, CRGB::DeepPink);
-  FastLED[0].showLeds(40);
+  FastLED.show();
+}
+
+void goto_sleep(unsigned int hours = 1) {
+  Serial.println("Goto sleep...");
+  FastLED.clear(true);
+  esp_wifi_stop();
+  delay(10);
+  esp_sleep_enable_timer_wakeup((uint64_t)(hours * 60 * 60) * (uint64_t)uS_TO_S_FACTOR);
+  esp_deep_sleep_start();
 }
 
 void setup() {
   btStop();
   WiFi.mode(WIFI_STA);
   WiFi.setHostname(HOSTNAME);
-  WiFi.setSleep(WIFI_PS_NONE);
   Serial.begin(115200);
 
   FastLED.addLeds<NEOPIXEL, PIN_RGB_LEDS>(leds, LED_COUNT);
-  FastLED.addLeds<NEOPIXEL, PIN_RGB_AMBILIGHT_LEDS>(ambilight_leds, AMBILIGHT_LED_COUNT);
 
   if(!SPIFFS.begin(true)){
     Serial.println("error on SPIFFS...");
   }
+  std::vector<const char *> wm_menu  = {"wifi", "exit"};
+  wm.setConnectTimeout(30);
   wm.setAPCallback(wm_config_mode_callback);
+  wm.setShowInfoUpdate(true);
+  wm.setShowInfoErase(false);
+  wm.setMenu(wm_menu);
   wm.autoConnect(HOSTNAME, "");
 
+  load_configuration(config);
+
+  FastLED.setBrightness(config.led_brightness);
   fill_solid(leds, LED_COUNT, CRGB::Black);
-  FastLED[0].showLeds(led_brightness);
-  fill_solid(ambilight_leds, AMBILIGHT_LED_COUNT, CRGB::Black);
-  FastLED[1].showLeds(ambilight_led_brightness);
+  FastLED.show();
 
   server.on("/", webHandleRoot);
   server.on("/update", webHandleUpdate);
@@ -170,11 +255,7 @@ void loop() {
     leds[28] = led_color;
     leds[29] = led_color;
 
-    // ambilight
-    fill_solid(ambilight_leds, AMBILIGHT_LED_COUNT, led_color);
-
-    FastLED[0].showLeds(led_brightness);
-    FastLED[1].showLeds(ambilight_led_brightness);
+    FastLED.show();
   }
   delay(1);
 }

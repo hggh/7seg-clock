@@ -23,11 +23,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.68"
-     inkscape:cx="394.4597"
-     inkscape:cy="330.14185"
+     inkscape:zoom="0.84"
+     inkscape:cx="115.66858"
+     inkscape:cy="524.61919"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g1152"
      inkscape:document-rotation="0"
      showgrid="false"
      inkscape:window-width="1920"
@@ -69,33 +69,66 @@
          x="64.764961"
          y="110.25471" />
       <rect
-         style="fill:none;stroke:#000000;stroke-width:0.200771;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         style="fill:none;stroke:#000000;stroke-width:0.224469;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
          id="rect961"
          width="3"
-         height="2"
+         height="2.5"
          x="74.764961"
-         y="110.75471" />
+         y="110.50471" />
       <rect
-         style="fill:none;stroke:#000000;stroke-width:0.200771;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         style="fill:none;stroke:#000000;stroke-width:0.224469;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
          id="rect961-5"
          width="3"
-         height="2"
+         height="2.5"
          x="115.24967"
-         y="110.75469" />
+         y="110.50469" />
       <rect
-         style="fill:none;stroke:#000000;stroke-width:0.200771;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         style="fill:none;stroke:#000000;stroke-width:0.224469;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
          id="rect961-5-3"
          width="3"
-         height="2"
+         height="2.5"
          x="115.24967"
-         y="82.754692" />
+         y="82.504692" />
       <rect
-         style="fill:none;stroke:#000000;stroke-width:0.200771;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         style="fill:none;stroke:#000000;stroke-width:0.224469;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
          id="rect961-5-3-5"
          width="3"
-         height="2"
+         height="2.5"
          x="115.24967"
-         y="96.754692" />
+         y="96.504692" />
+      <path
+         id="rect833-3"
+         style="fill:none;stroke:#000000;stroke-width:0.34015748;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         d="M 461.47266 526.35156 L 371.82812 772.77344 L 239.54492 724.62695 L 239.54492 772.77344 L 239.54492 791.67188 L 398.28516 791.67188 L 479.48633 791.67188 L 479.48633 703.4707 L 479.48633 654.25781 L 479.48633 609.86523 L 479.48633 572.27539 L 479.48633 526.35156 L 461.47266 526.35156 z "
+         transform="scale(0.26458333)" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.110227;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         id="rect961-53"
+         width="3"
+         height="2.5"
+         x="73.379539"
+         y="204.71307" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.110227;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         id="rect961-5-5"
+         width="3"
+         height="2.5"
+         x="113.86425"
+         y="204.71306" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.110227;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         id="rect961-5-3-6"
+         width="3"
+         height="2.5"
+         x="113.86425"
+         y="176.71306" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.110227;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
+         id="rect961-5-3-5-2"
+         width="3"
+         height="2.5"
+         x="113.86425"
+         y="190.71306" />
     </g>
     <rect
        style="fill:none;stroke:#000000;stroke-width:1.15915;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;paint-order:fill markers stroke"
