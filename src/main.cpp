@@ -257,5 +257,8 @@ void loop() {
 
     FastLED.show();
   }
+  if (config.time_sleep_enable == true && config.time_sleep_hour == timedate.tm_hour && timedate.tm_min == 0) {
+    goto_sleep(config.time_sleep_duration);
+  }
   delay(1);
 }
